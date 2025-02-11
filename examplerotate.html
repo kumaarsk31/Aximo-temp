@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Example with Side Arrows</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .faq-item {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            display: none;
+            margin: 5px 0 15px 0;
+        }
+
+        .arrow {
+            transition: transform 0.2s ease;
+        }
+
+        .arrow.up {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="faq-item">
+    <div class="faq-question">What is jQuery? <span class="arrow">&#9660;</span></div>
+    <div class="faq-answer">jQuery is a fast, small, and feature-rich JavaScript library.</div>
+</div>
+
+<div class="faq-item">
+    <div class="faq-question">What is JavaScript? <span class="arrow">&#9660;</span></div>
+    <div class="faq-answer">JavaScript is a programming language commonly used in web development.</div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.faq-question').click(function() {
+            var answer = $(this).next('.faq-answer');
+            var arrow = $(this).find('.arrow');
+            
+            // Toggle answer visibility
+            answer.slideToggle();
+            
+            // Toggle arrow direction using CSS class
+            arrow.toggleClass('up');
+        });
+    });
+</script>
+
+</body>
+</html>
